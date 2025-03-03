@@ -2,21 +2,22 @@
 Final task for dumbways bootcamp
 
 <details>
-    <summary><h2>soal 1.js</h2></summary>
+    <summary><h1>Soal 1.js</h1></summary>
     <img src = "https://github.com/asamarsal/asa-marsal-b60-finaltask-a/blob/main/4/image/hasil1.PNG"/>
 </details>
 
 <details>
-    <summary><h2>soal 2.js</h2></summary>
+    <summary><h1>Soal 2.js</h1></summary>
     <img src = "https://github.com/asamarsal/asa-marsal-b60-finaltask-a/blob/main/4/image/hasil2.PNG"/>
 </details>
 
 <details>
-    <summary><h2>soal 3.js</h2></summary>
+    <summary><h1>Soal 3.js</h1></summary>
     <img src = "https://github.com/asamarsal/asa-marsal-b60-finaltask-a/blob/main/4/image/hasil3.PNG"/>
 </details>
 
 <details>
+    <summary><h1>soal folder 4A</h1></summary>
     <details>
         <summary><h3>View</h3></summary>
         <h4>Tampilkan seluruh data dari table heroes beserta type dari hero tersebut</h4>
@@ -27,7 +28,6 @@ Final task for dumbways bootcamp
         <img src = "https://github.com/asamarsal/asa-marsal-b60-finaltask-a/blob/main/4/image/view/3a.PNG"/>
         <img src = "https://github.com/asamarsal/asa-marsal-b60-finaltask-a/blob/main/4/image/view/3b.PNG"/>
     </details>
-    <summary><h2>soal folder 4A</h2></summary>
     <details>
         <summary><h3>Screen shootkan juga hasil query POST / menambah data.</h3></summary>
         <img src = "https://github.com/asamarsal/asa-marsal-b60-finaltask-a/blob/main/4/image/insert/1a.PNG"/>
