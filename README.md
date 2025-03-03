@@ -17,7 +17,7 @@ Final task for dumbways bootcamp
 </details>
 
 <details>
-    <summary><h1>soal folder 4A</h1></summary>
+    <summary><h1>Soal folder 4A</h1></summary>
     <details>
         <summary><h3>View</h3></summary>
         <h4>Tampilkan seluruh data dari table heroes beserta type dari hero tersebut</h4>
