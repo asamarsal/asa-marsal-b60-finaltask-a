@@ -1,0 +1,128 @@
+.title-top{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    user-select: none;
+}
+
+.activetwo {
+    background-color: #ff6200 !important;
+    border-color: #ff6200 !important;
+}
+
+.activetwo:hover {
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(-10px) scale(1.1);
+}
+
+.backgroundorange{
+    background-color: #ff6200;
+}
+
+.textbiru{
+    color: #6a00a7 !important;
+}
+
+.textbold{
+    font-weight: bold !important;
+}
+
+.button-container {
+    gap: 16px;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+
+.logonavbar{
+    width: 30px;
+}
+
+.effecthoverbesar:hover {
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(-10px) scale(1.2);
+}
+
+.effecthoverkecil:hover {
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(-4px);
+}
+
+/* Login Page */
+
+.create-blog-form{
+    width: 400px;
+    margin: 30px auto;
+}
+
+.login-tulisan {
+    text-align: start;
+    user-select: none;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.login-animation-container {
+    user-select: none;
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.login-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.login-button-container:hover {
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(-4px);
+}
+
+/* Register Page */
+
+.register-tulisan {
+    user-select: none;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.register-animation-container {
+    user-select: none;
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.register-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.register-button-container:hover {
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(-4px);
+}
+
+/* Blog Create */
+
+select.form-select option:disabled {
+    color: #6c757d;
+}
+
+select.form-select option {
+    color: black !important;
+}
+
+.createblog-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.createblog-button-container:hover {
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(-4px);
+}

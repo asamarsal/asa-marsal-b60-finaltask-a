@@ -1,0 +1,42 @@
+{{#> layout currentPage='Edit-Blog'}}
+
+    <form id="create-blog" class="create-blog-form" enctype="multipart/form-data" method="post" action="/blog-create">
+      
+        <h1 style="user-select: none;">Edit Pokemon</h1>
+
+        <div class="input-group mb-3 mt-4" style="user-select: none;">
+            <input name="title" id="title" type="text" placeholder="Nama Pokemon" class="form-control" aria-label="Sizing example input" aria-describedby="title" required>
+        </div>
+
+        <div class="input-group mb-3 mt-3" style="user-select: none;">
+            <select class="form-select" aria-label="Pokemon Type Selection" required style="color: #6c757d;">
+                <option value="" disabled selected>Tipe Pokemon</option>
+                <option value="1">Fire</option>
+                <option value="2">Water</option>
+                <option value="3">Electric</option>
+                <option value="4">Grass</option>
+            </select>
+        </div>
+
+        <div class="input-group mb-3 mt-3" style="user-select: none;">
+            <select class="form-select" aria-label="Pokemon Type Selection" required style="color: #6c757d;">
+                <option value="" disabled selected>Pemilik Pokemon</option>
+                <option value="1">Trainer 1</option>
+                <option value="2">Trainer 2</option>
+                <option value="3">Trainer 3</option>
+                <option value="4">Trainer 4</option>
+            </select>
+        </div>
+
+        <div class="input-group mb-3" style="user-select: none;">
+            <input name="image" type="file" class="form-control" id="image">
+            <label class="input-group-text" for="image">Upload</label>
+        </div>
+
+        <div class="createblog-button-container mt-4">
+            <button class="btn btn-primary" type="submit">Register</button>
+        </div>
+
+    </form>
+
+{{/layout}}
