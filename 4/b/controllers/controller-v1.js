@@ -1,3 +1,8 @@
+const {Sequelize, QueryTypes} = require("sequelize");
+const config = require("../config/config.json");
+
+const sequelize = new Sequelize(config.development);
+
 let blogs = [
     {
         title: "Squirtle",
@@ -7,41 +12,54 @@ let blogs = [
     }
 ];
 
-function renderBlog(req, res) {
-    res.render("blog-list",  { blogs: blogs })
+async function renderBlog(req, res) {
+    const users = await sequelize.query("SELECT * FROM heroes_tb ORDER BY name ASC", {
+        type: QueryTypes.SELECT,
+    });
+    // console.log(users);
+    res.render("blog-list",  { blogs: users })
 }
 
-function createBlog(req, res) {
+async function createBlog(req, res) {
     const { title, pokemontype, pokemontrainer, newPokemonType, newPokemonTrainer } = req.body;
+    const finalpokemontype = newPokemonType || pokemontype;
+    const finalpokemontrainer = newPokemonTrainer || pokemontrainer;
+    
     console.log({
-        title,
-        pokemontype,
-        newPokemonType,
-        pokemontrainer,
-        newPokemonTrainer
+        "Judulnya" : title,
+        "Type 1" : pokemontype,
+        "Type 2" : newPokemonType,
+        "Trainer 1" : pokemontrainer,
+        "Trainer 2" : newPokemonTrainer
     });
 
-    let newBlog = {
-        title: title,
-        pokemontype: pokemontype || newPokemonType,
-        pokemontrainer: pokemontrainer || newPokemonTrainer,
-        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
-    };
+    let query = `
+        INSERT INTO heroes_tb (name, type_id, user_id, photo)
+        VALUES ('${title}', '${finalpokemontype}', '${finalpokemontrainer}', 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png')`;
 
-    blogs.push(newBlog);
+    const newblogs = await sequelize.query(query, {
+        type: QueryTypes.INSERT,
+    });
+
+    // blogs.push(newBlog);
 
     res.redirect("blog");
 };
 
-function renderBlogEdit(req, res) {
+async function renderBlogEdit(req, res) {
     const id = req.params.id;
-    const blogYangDipilih = blogs[id];
+    
+    const query = `SELECT * FROM heroes_tb WHERE id = ${id}`;
+    const blogYangDipilih = await sequelize.query(query, {
+        type: QueryTypes.SELECT,
+    });
     console.log(blogYangDipilih);
 
-    res.render("blog-edit", {blog: blogYangDipilih, index: id});
+
+    res.render("blog-edit", {blog: blogYangDipilih[0] });
 }
 
-function updateBlog(req, res) {
+async function updateBlog(req, res) {
     const id = req.params.id;
     const { title, pokemontype, pokemontrainer, newPokemonType, newPokemonTrainer } = req.body;
     console.log({
@@ -52,30 +70,40 @@ function updateBlog(req, res) {
         "Trainer Baru 2" : newPokemonTrainer
     });
 
-    let updatedBlog = {
-        title: title,
-        pokemontype: pokemontype || newPokemonType,
-        pokemontrainer: pokemontrainer || newPokemonTrainer,
-        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
-    };
-
-    blogs[id] = updatedBlog;
+    const query = `UPDATE "heroes_tb" SET name = '${title}', 
+        type_id = '${pokemontype || newPokemonType}', 
+        user_id = '${pokemontrainer || newPokemonTrainer}' 
+        WHERE id = ${id}`;
+        
+    const updateResult = await sequelize.query(query, {
+        type: QueryTypes.UPDATE,
+    });
 
     res.redirect("/blog");
 }
 
-function renderBlogDetail(req, res) {
+async function renderBlogDetail(req, res) {
     const id = req.params.id;
-    const blogYangDipilih = blogs[id];
+
+    const query = `SELECT * FROM heroes_tb WHERE id = ${id}`;
+    const blogYangDipilih = await sequelize.query(query, {
+        type: QueryTypes.SELECT,
+    });
     console.log(blogYangDipilih);
-    res.render("blog-detail", { blog: blogYangDipilih });
+
+    res.render("blog-detail", { blog: blogYangDipilih[0] });
 }
 
-function deleteBlog(req, res) {
+async function deleteBlog(req, res) {
     const id = req.params.id;
-    const blogYangDipilih = blogs[id];
-    console.log(blogYangDipilih);
-    blogs.splice(id, 1);
+
+    const query = `DELETE FROM heroes_tb WHERE id = ${id}`;
+
+    const deleteResult = await sequelize.query(query, {
+        type: QueryTypes.DELETE,
+    });
+
+    console.log("Result : ",deleteResult);
 
     res.redirect("/blog");
 }
