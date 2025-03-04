@@ -1,4 +1,4 @@
-{{#> layout currentPage='Create-Blog'}}
+{{#> layout currentPage='Blog'}}
 
     <form id="create-blog" class="create-blog-form" method="post" action="/blog-create">
       
@@ -28,7 +28,7 @@
             <select name="pokemontrainer" id="pokemontrainer" class="form-select" aria-label="Pokemon Type Selection" required style="color: #6c757d;">
                 <option value="">Pemilik Pokemon</option>
                 <option value="1">Trainer 1</option>
-                <option value="2">Trainer 1</option>
+                <option value="2">Trainer 2</option>
                 <option value="3">Trainer 3</option>
                 <option value="4">Trainer 4</option>
             </select>
@@ -42,7 +42,7 @@
         </div>
 
         <div class="createblog-button-container mt-4">
-            <button class="btn btn-primary" type="submit">Register</button>
+            <button class="btn btn-primary" type="submit">Submit</button>
         </div>
 
     </form>
@@ -90,7 +90,7 @@
             trainerSelect.setAttribute('disabled', 'true');
             // Mengembalikan dropdown ke opsi default
             trainerSelect.selectedIndex = 0;
-            
+
             const newInput = document.createElement('div');
             newInput.className = 'input-group mb-3 mt-3';
             newInput.innerHTML = `

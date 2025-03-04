@@ -11,23 +11,28 @@
         </div>         
         <div class="blog-container">
 
-        <div class="blog-card">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" alt="Pokemon">
-            <h3>Charizard</h3>
-            <p>Fire Type</p>
-            <a href="/blog-detail" class="w-100">
-                <button class="btn btn-primary w-100">Detail</button>
-            </a>
-        </div>
-
         {{#each blogs}}
-            <div class="blog-card">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" alt="Pokemon">
-                <h3 style="user-select: none;">{{this.title}}</h3>
-                <p style="user-select: none;">{{this.pokemontype}}</p>
-                <a href="/blog-detail" class="w-100">
-                    <button class="btn btn-primary w-100">Detail</button>
-                </a>
+            <div class="blog-card" style="user-select: none;">
+                <img src="{{this.image}}" alt="Pokemon">
+                <h3>{{this.title}}</h3>
+                <p>{{this.pokemontype}}</p>
+                <div class="blog-card-buttons">
+                    <div class="button-wrapper">
+                        <a href="/blog/{{@index}}">
+                            <button class="btn btn-primary w-100">Detail</button>
+                        </a>
+                    </div>
+                    <div class="button-wrapper">
+                        <form action="/blog/{{@index}}?_method=DELETE" method="post">
+                            <button onclick="return confirm('Delete beneran?')" class="btn btn-danger w-100" type="submit">Delete</button>
+                        </form>
+                    </div>
+                    <div class="button-wrapper">
+                        <form action="" method="post">
+                            <button class="btn btn-success w-100" type="submit">Edit</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         {{/each}}
 
