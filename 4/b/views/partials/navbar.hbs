@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link active effecthoverkecil {{#if (equal currentPage 'Home')}}textbiru textbold{{/if}}"
+                <a class="nav-link effecthoverkecil {{#if (equal currentPage 'Home')}}textbiru textbold{{else}}textputih{{/if}}"
                     style="user-select: none;" 
                     aria-current="page" 
                     href="/">
@@ -17,7 +17,10 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white effecthoverkecil" style="user-select: none;" href="#">Link</a>
+                <a class="nav-link effecthoverkecil {{#if (equal currentPage 'Blog')}}textbiru textbold{{else}}textputih{{/if}}"
+                    style="user-select: none;" href="/blog">
+                    Pokemon List
+                </a>
             </li>
             </ul>
             <a class="d-flex" href="/auth-login">

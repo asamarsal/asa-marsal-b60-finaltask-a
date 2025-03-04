@@ -1,0 +1,31 @@
+{{#> layout currentPage='Type-Blog'}}
+
+    <form id="create-blog" class="create-blog-form" enctype="multipart/form-data" method="post" action="/blog-create">
+      
+        <h1 style="user-select: none; text-align: center">Add Type Pokemon</h1>
+
+        <div class="typeblog-image-container">
+            <img src="/img/icons/pokeball_icon.png" alt="Pokemon" style="width: 150px; height: auto;">
+        </div>
+
+        <div class="input-group mb-3 mt-3" style="user-select: none;">
+            <select class="form-select" aria-label="Pokemon Type Selection" required style="color: #6c757d;">
+                <option value="" disabled selected>Tipe Pokemon Saat Ini</option>
+                <option value="" disabled>Fire</option>
+                <option value="" disabled>Water</option>
+                <option value="" disabled>Electric</option>
+                <option value="" disabled>Grass</option>
+            </select>
+        </div>
+
+        <div class="input-group mb-3 mt-4" style="user-select: none;">
+            <input name="title" id="title" type="text" placeholder="Tambah More Type" class="form-control" aria-label="Sizing example input" aria-describedby="title" required>
+        </div>
+
+        <div class="createblog-button-container mt-4">
+            <button class="btn btn-primary" type="submit">Register</button>
+        </div>
+
+    </form>
+
+{{/layout}}

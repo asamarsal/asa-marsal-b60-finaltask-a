@@ -1,0 +1,34 @@
+{{#> layout currentPage='Blog'}}
+
+        <h1 class="title-top mt-3">Pokemon</h1>
+        <div class="button-container">
+            <a href="/blog-create">
+                <button id="btn" class="btn btn-primary activetwo">Add Hero</button>
+            </a>
+            <a href="/blog-type">
+                <button id="btn" class="btn btn-primary activetwo">Add Type</button>
+            </a>
+        </div>         
+        <div class="blog-container">
+
+        <div class="blog-card">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" alt="Pokemon">
+            <h3>Charizard</h3>
+            <p>Fire Type</p>
+            <a href="/blog-detail" class="w-100">
+                <button class="btn btn-primary w-100">Detail</button>
+            </a>
+        </div>
+
+        {{#each blogs}}
+            <div class="blog-card">
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" alt="Pokemon">
+                <h3 style="user-select: none;">{{this.title}}</h3>
+                <p style="user-select: none;">{{this.pokemontype}}</p>
+                <a href="/blog-detail" class="w-100">
+                    <button class="btn btn-primary w-100">Detail</button>
+                </a>
+            </div>
+        {{/each}}
+
+{{/layout}}
