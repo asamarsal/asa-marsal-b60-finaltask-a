@@ -33,6 +33,37 @@ function createBlog(req, res) {
     res.redirect("blog");
 };
 
+function renderBlogEdit(req, res) {
+    const id = req.params.id;
+    const blogYangDipilih = blogs[id];
+    console.log(blogYangDipilih);
+
+    res.render("blog-edit", {blog: blogYangDipilih, index: id});
+}
+
+function updateBlog(req, res) {
+    const id = req.params.id;
+    const { title, pokemontype, pokemontrainer, newPokemonType, newPokemonTrainer } = req.body;
+    console.log({
+        "Judul Baru" : title,
+        "Type Baru 1" : pokemontype,
+        "Type Baru 2" : newPokemonType,
+        "Trainer Baru 1" : pokemontrainer,
+        "Trainer Baru 2" : newPokemonTrainer
+    });
+
+    let updatedBlog = {
+        title: title,
+        pokemontype: pokemontype || newPokemonType,
+        pokemontrainer: pokemontrainer || newPokemonTrainer,
+        image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+    };
+
+    blogs[id] = updatedBlog;
+
+    res.redirect("/blog");
+}
+
 function renderBlogDetail(req, res) {
     const id = req.params.id;
     const blogYangDipilih = blogs[id];
@@ -52,6 +83,8 @@ function deleteBlog(req, res) {
 module.exports = {
     renderBlog,
     createBlog,
+    updateBlog,
     deleteBlog,
     renderBlogDetail,
+    renderBlogEdit,
 }

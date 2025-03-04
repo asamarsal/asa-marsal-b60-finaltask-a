@@ -4,7 +4,7 @@ const hbs = require('hbs');
 const path = require('path');
 const methodOverride = require('method-override');
 
-const {renderBlog, renderBlogDetail, createBlog, deleteBlog} = require('./controllers/controller-v1');
+const {renderBlog, renderBlogDetail, createBlog, deleteBlog, updateBlog, renderBlogEdit} = require('./controllers/controller-v1');
 
 const port = 3000;
 
@@ -46,9 +46,10 @@ app.get('/blog-create', (req, res) => {
 app.post('/blog-create', createBlog);
 
 //Render Edit Blog
-app.get('/blog-edit/:id', (req, res) => {
-    res.render("blog-edit")
-})
+app.get('/blog-edit/:id', renderBlogEdit);
+
+//Submit Edited Blog
+app.patch("/blog-update/:id", updateBlog);
 
 //Delete Existing Blog
 app.delete("/blog/:id", deleteBlog);

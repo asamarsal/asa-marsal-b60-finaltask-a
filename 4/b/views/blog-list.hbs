@@ -3,10 +3,10 @@
         <h1 class="title-top mt-3">Pokemon</h1>
         <div class="button-container">
             <a href="/blog-create">
-                <button id="btn" class="btn btn-primary activetwo">Add Hero</button>
+                <button id="btn" class="btn btn-success activetwo">Add Hero</button>
             </a>
             <a href="/blog-type">
-                <button id="btn" class="btn btn-primary activetwo">Add Type</button>
+                <button id="btn" class="btn btn-success activetwo">Add Type</button>
             </a>
         </div>         
         <div class="blog-container">
@@ -28,9 +28,9 @@
                         </form>
                     </div>
                     <div class="button-wrapper">
-                        <form action="" method="post">
-                            <button class="btn btn-success w-100" type="submit">Edit</button>
-                        </form>
+                        <a href="/blog-edit/{{@index}}">
+                            <button class="btn btn-success w-100">Edit</button>
+                        </a>
                     </div>
                 </div>
             </div>

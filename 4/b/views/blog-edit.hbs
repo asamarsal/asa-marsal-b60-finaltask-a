@@ -1,6 +1,6 @@
 {{#> layout currentPage='Blog'}}
 
-    <form id="create-blog" class="create-blog-form" enctype="multipart/form-data" method="post" action="/blog-create">
+    <form id="create-blog" class="create-blog-form" method="post" action="/blog-update/{{index}}?_method=PATCH">
       
         <h1 style="user-select: none; text-align: center">Edit Pokemon</h1>
 
@@ -9,28 +9,28 @@
         </div>
 
         <div class="input-group mb-3 mt-4" style="user-select: none;">
-            <input name="title" id="title" type="text" placeholder="Nama Pokemon" class="form-control" aria-label="Sizing example input" aria-describedby="title" required>
+            <input name="title" id="title" type="text" placeholder="Nama Pokemon" class="form-control" aria-label="Sizing example input" aria-describedby="title" value="{{blog.title}}" required>
         </div>
 
         <div class="input-group mb-3 mt-3" style="user-select: none;">
-            <select class="form-select" aria-label="Pokemon Type Selection" required style="color: #6c757d;">
+            <select name="pokemontype" class="form-select" aria-label="Pokemon Type Selection" required style="color: #6c757d;">
                 <option value="">Tipe Pokemon</option>
-                <option value="1">Fire</option>
-                <option value="2">Water</option>
-                <option value="3">Electric</option>
-                <option value="4">Grass</option>
+                <option value="1" {{#if (equal blog.pokemontype "1")}}selected{{/if}}>Fire</option>
+                <option value="2" {{#if (equal blog.pokemontype "2")}}selected{{/if}}>Water</option>
+                <option value="3" {{#if (equal blog.pokemontype "3")}}selected{{/if}}>Electric</option>
+                <option value="4" {{#if (equal blog.pokemontype "4")}}selected{{/if}}>Grass</option>
             </select>
             <button class="btn btn-secondary" type="button" onclick="addNewType()">+</button>
         </div>
         <div id="newTypeContainer"></div>
 
         <div class="input-group mb-3 mt-3" style="user-select: none;">
-            <select class="form-select" aria-label="Pokemon Type Selection" required style="color: #6c757d;">
+            <select name="pokemontrainer" class="form-select" aria-label="Pokemon Type Selection" required style="color: #6c757d;">
                 <option value="">Pemilik Pokemon</option>
-                <option value="1">Trainer 1</option>
-                <option value="2">Trainer 2</option>
-                <option value="3">Trainer 3</option>
-                <option value="4">Trainer 4</option>
+                <option value="1" {{#if (equal blog.pokemontrainer "1")}}selected{{/if}}>Trainer 1</option>
+                <option value="2" {{#if (equal blog.pokemontrainer "2")}}selected{{/if}}>Trainer 2</option>
+                <option value="3" {{#if (equal blog.pokemontrainer "3")}}selected{{/if}}>Trainer 3</option>
+                <option value="4" {{#if (equal blog.pokemontrainer "4")}}selected{{/if}}>Trainer 4</option>
             </select>
             <button class="btn btn-secondary" type="button" onclick="addNewTrainer()">+</button>
         </div>
@@ -42,7 +42,7 @@
         </div>
 
         <div class="createblog-button-container mt-4">
-            <button class="btn btn-primary" type="submit">Register</button>
+            <button class="btn btn-primary" type="submit">Submit</button>
         </div>
 
     </form>
