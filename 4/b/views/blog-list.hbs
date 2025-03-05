@@ -1,39 +1,64 @@
 {{#> layout currentPage='Blog'}}
 
         <h1 class="title-top mt-3">Pokemon</h1>
-        <div class="button-container">
-            <a href="/blog-create">
-                <button id="btn" class="btn btn-success activetwo">Add Hero</button>
-            </a>
-            <a href="/blog-type">
-                <button id="btn" class="btn btn-success activetwo">Add Type</button>
-            </a>
-        </div>         
-        <div class="blog-container">
-
-        {{#each blogs}}
-            <div class="blog-card" style="user-select: none;">
-                <img src="{{this.photo}}" alt="Pokemon">
-                <h3>{{this.name}}</h3>
-                <p>{{this.type_id}}</p>
-                <div class="button-wrapper">
-                        <a href="/blog/{{this.id}}">
-                            <button class="btn btn-primary w-100">Detail</button>
-                        </a>
-                </div>
-                <div class="blog-card-buttons">
-                    <div class="button-wrapper">
-                        <form action="/blog/{{this.id}}?_method=DELETE" method="post">
-                            <button onclick="return confirm('Delete beneran?')" class="btn btn-danger w-100" type="submit">Delete</button>
-                        </form>
-                    </div>
-                    <div class="button-wrapper">
-                        <a href="/blog-edit/{{this.id}}">
-                            <button class="btn btn-success w-100">Edit</button>
-                        </a>
-                    </div>
-                </div>
+        
+        {{#if user}}
+            <div class="button-container">
+                <a href="/blog-create">
+                    <button id="btn" class="btn btn-success activetwo">Add Hero</button>
+                </a>
+                <a href="/blog-type">
+                    <button id="btn" class="btn btn-success activetwo">Add Type</button>
+                </a>
             </div>
-        {{/each}}
+        {{/if}}    
+
+        <div class="blog-container">
+            {{#each blogs}}
+                <div class="blog-card" style="user-select: none;">
+                    <img src="{{this.photo}}" alt="Pokemon">
+                    <h3>{{this.name}}</h3>
+                    <p>{{this.type_id}}</p>
+                    <div class="button-wrapper">
+                            <a href="/blog/{{this.id}}">
+                                <button class="btn btn-primary w-100">Detail</button>
+                            </a>
+                    </div>
+                    {{#if ../user}}
+                        <div class="blog-card-buttons">
+                            <div class="button-wrapper">
+                                <form action="/blog/{{this.id}}?_method=DELETE" method="post">
+                                    <button type="button" onclick="confirmDelete({{this.id}})" class="btn btn-danger w-100">Delete</button>
+                                </form>
+                            </div>
+                            <div class="button-wrapper">
+                                <a href="/blog-edit/{{this.id}}">
+                                    <button class="btn btn-success w-100">Edit</button>
+                                </a>
+                            </div>
+                        </div>
+                    {{/if}}
+                </div>
+            {{/each}}
+        </div>
+
+        <script>
+            function confirmDelete(id) {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You cant restore!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        fetch(`/blog/${id}?_method=DELETE`, { method: 'POST' })
+                        .then(() => window.location.reload());
+                    }
+                })
+            }
+        </script>
 
 {{/layout}}

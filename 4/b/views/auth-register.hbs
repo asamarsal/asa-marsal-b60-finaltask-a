@@ -23,12 +23,19 @@
             <input name="confirmPassword" id="confirmPassword" type="password" placeholder="Confirm Password" class="form-control" aria-label="Sizing example input" aria-describedby="title" required>
         </div>
 
+        {{#if messages.error}}
+            <div class="alert alert-danger alert-dismissible fade show mt-3 d-flex justify-content-between align-items-center" style="user-select:none" role="alert">
+                {{messages.error}}
+                <button type="button" class="btn-close ms-2" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {{/if}}
+
         <div class="register-button-container">
             <button class="btn btn-primary" type="submit">Register</button>
         </div>
 
         <p class="login-tulisan mt-4">Have an account? </p>
-        <a href="/auth-login" class="register-link">Login</a>
+        <a href="/auth-login" class="register-link" style="user-select: none;">Login</a>
     </form>
 
 {{/layout}}

@@ -1,6 +1,6 @@
 {{#> layout currentPage='Blog'}}
 
-    <form id="create-blog" class="create-blog-form" method="post" action="/blog-create">
+    <form id="create-blog" class="create-blog-form" method="post" action="/blog-create" enctype="multipart/form-data">
       
         <h1 style="user-select: none; text-align: center">Add Pokemon</h1>
 
@@ -14,11 +14,10 @@
 
         <div class="input-group mb-3 mt-3" style="user-select: none;">
             <select name="pokemontype" id="pokemontype" class="form-select" aria-label="Pokemon Type Selection" required style="color: #6c757d;">
-                <option value="">Tipe Pokemon</option>
-                <option value="1">Fire</option>
-                <option value="2">Water</option>
-                <option value="3">Electric</option>
-                <option value="4">Grass</option>
+                <option value="" disabled selected>Tipe Pokemon</option>
+                {{#each types}}
+                    <option value="{{this.name}}">{{this.name}}</option>
+                {{/each}}
             </select>
             <button class="btn btn-secondary" type="button" onclick="addNewType()">+</button>
         </div>
@@ -37,7 +36,7 @@
         <div id="newTrainerContainer"></div>
 
         <div class="input-group mb-3" style="user-select: none;">
-            <input name="image" type="file" class="form-control" id="image">
+            <input name="image" type="file" class="form-control" id="image" accept="image/*">
             <label class="input-group-text" for="image">Upload</label>
         </div>
 

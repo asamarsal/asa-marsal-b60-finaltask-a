@@ -11,8 +11,10 @@
         </div>
         <div class="blog-item-text">
           <div class="blog-item-buttons">
-            <button class="btn btn-primary posisiend blog-button-effect">Edit Hero</button>
-            <button class="btn btn-danger posisiend blog-button-effect">Delete Hero</button>
+            {{#if user}}
+              <button class="btn btn-primary posisiend blog-button-effect">Edit Hero</button>
+              <button class="btn btn-danger posisiend blog-button-effect">Delete Hero</button>
+            {{/if}}
           </div>
           <a href="blog-detail.html" style="text-decoration: none">
             <h1 class="blog-item-title">{{blog.name}}</h1>

@@ -15,10 +15,13 @@
         <div class="input-group mb-3 mt-3" style="user-select: none;">
             <select id="pokemontype" name="pokemontype" class="form-select" aria-label="Pokemon Type Selection" required style="color: #6c757d;">
                 <option value="">Tipe Pokemon</option>
-                <option value="1" {{#if (equal blog.type_id "fire")}}selected{{/if}}>Fire</option>
-                <option value="2" {{#if (equal blog.type_id "water")}}selected{{/if}}>Water</option>
-                <option value="3" {{#if (equal blog.type_id "electric")}}selected{{/if}}>Electric</option>
-                <option value="4" {{#if (equal blog.type_id "grass")}}selected{{/if}}>Grass</option>
+                <option value="earth" {{#if (equal blog.type_id "fire")}}selected{{/if}}>Fire</option>
+                <option value="fire" {{#if (equal blog.type_id "fire")}}selected{{/if}}>Fire</option>
+                <option value="water" {{#if (equal blog.type_id "water")}}selected{{/if}}>Water</option>
+                <option value="electric" {{#if (equal blog.type_id "electric")}}selected{{/if}}>Electric</option>
+                <option value="grass" {{#if (equal blog.type_id "grass")}}selected{{/if}}>Grass</option>
+                <option value="ice" {{#if (equal blog.type_id "ice")}}selected{{/if}}>Ice</option>
+                <option value="rock" {{#if (equal blog.type_id "rock")}}selected{{/if}}>Rock</option>
             </select>
             <button class="btn btn-secondary" type="button" onclick="addNewType()">+</button>
         </div>
@@ -42,7 +45,7 @@
         </div>
 
         <div class="createblog-button-container mt-4">
-            <button class="btn btn-primary" type="submit">Submit</button>
+            <button class="btn btn-primary" type="submit">Save</button>
         </div>
 
     </form>

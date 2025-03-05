@@ -1,0 +1,73 @@
+{{#> layout currentPage='Delete-Type'}}
+
+    <form id="delete-type-form" class="create-blog-form">
+        {{#if messages.success}}
+        <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            {{messages.success}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {{/if}}
+        
+        {{#if messages.error}}
+            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                {{messages.error}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {{/if}}
+
+        <h1 style="user-select: none; text-align: center">Delete Type Pokemon</h1>
+
+        <div class="typeblog-image-container">
+            <img src="/img/icons/pokeball_icon.png" alt="Pokemon" style="width: 150px; height: auto;">
+        </div>
+
+        <div class="input-group mb-3 mt-3" style="user-select: none;">
+            <select id="typeSelect" class="form-select" aria-label="Pokemon Type Selection" style="color: #6c757d;">
+                <option value="" disabled selected>Tipe Pokemon Saat Ini</option>
+                {{#each types}}
+                    <option value="{{this.id}}">{{this.name}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="createblog-button-container mt-4">
+            <button type="button" onclick="confirmDeletetype()" class="btn btn-primary">Delete</button>
+        </div>
+
+    </form>
+
+    <script>
+            function confirmDeletetype() {
+            const typeSelect = document.getElementById('typeSelect');
+            const selectedTypeId = typeSelect.value;
+            
+            if (!selectedTypeId) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error', 
+                    text: 'Silakan pilih tipe Pokemon terlebih dahulu'
+                });
+                return;
+            }
+
+            Swal.fire({
+                title: 'Apakah anda yakin?',
+                text: "Data tidak dapat dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Ya, hapus!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`/delete-type/${selectedTypeId}?_method=DELETE`, {
+                        method: 'POST'
+                    }).then(() => {
+                        window.location.href = '/delete-type';
+                    });
+                }
+            })
+        }
+    </script>
+
+{{/layout}}

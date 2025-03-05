@@ -23,6 +23,12 @@
                 </a>
             </li>
             </ul>
+            {{#if user}}
+                <span class="me-2 text-white">
+                    Hello, {{user.username}}
+                </span>
+                <a class="text-purple me-3" href="/logout">Logout</a>
+            {{/if}}
             <a class="d-flex" href="/auth-login">
                 <button class="btn btn-primary effecthoverkecil" type="submit">Login/Register</button>
             </a>
